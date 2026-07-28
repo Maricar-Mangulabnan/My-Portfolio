@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "title": "CampusGo",
+    "description": "Quest-Based AR Gamification System",
+    "technologies": ["Unity", "C#", "Firebase"]
+  },
+  {
+    "id": 2,
+    "title": "Portfolio Website",
+    "description": "Personal portfolio using React and Node.js",
+    "technologies": ["React", "Express", "Vite"]
+  }
+]
