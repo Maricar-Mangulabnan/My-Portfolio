@@ -1,13 +1,7 @@
-import Navbar from "./components/layout/Navbar/Navbar";
-import Hero from "./components/sections/Hero/Hero";
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
-  return (
-    <>
-      <Navbar />
-      <Hero />
-    </>
-  );
+  return <AppRoutes />;
 }
 
 export default App;

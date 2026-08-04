@@ -2,28 +2,29 @@ import { ArrowRight, Download } from "lucide-react";
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
 
-import profile from "../../../assets/images/profile.png";
+import profile from "../../assets/images/profile.png";
 
-import Button from "../../ui/Button";
-import Container from "../../ui/Container";
+import Button from "../common/Button";
+import Container from "../common/Container";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center pt-36 overflow-hidden">
+    <section className="relative flex min-h-screen items-center overflow-hidden pt-32">
       {/* Background Glow */}
-      <div className="absolute top-24 left-20 h-72 w-72 rounded-full bg-primary/10 blur-[120px]" />
+      <div className="absolute top-20 left-10 h-72 w-72 rounded-full bg-primary/10 blur-[120px]" />
 
-      <div className="absolute bottom-20 right-20 h-80 w-80 rounded-full bg-secondary/10 blur-[140px]" />
+      <div className="absolute right-10 bottom-10 h-80 w-80 rounded-full bg-secondary/10 blur-[140px]" />
 
       <Container>
-        <div className="grid items-center gap-16 lg:grid-cols-2">
-          {/* LEFT SIDE */}
+        <div className="grid items-center gap-20 lg:grid-cols-[1.1fr_0.9fr]">
+          {/* ================= LEFT ================= */}
+
           <motion.div
             initial={{ opacity: 0, x: -60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            {/* Status Badge */}
+            {/* Status */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
@@ -35,21 +36,23 @@ const Hero = () => {
             </motion.div>
 
             {/* Greeting */}
+
             <motion.p
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="mb-4 font-medium text-primary"
+              className="mb-4 text-lg font-medium text-primary"
             >
               Hello, I'm
             </motion.p>
 
             {/* Name */}
+
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="bg-gradient-to-r from-text to-primary bg-clip-text text-6xl font-extrabold leading-tight text-transparent"
+              className="bg-gradient-to-r from-text to-primary bg-clip-text text-5xl font-extrabold leading-tight text-transparent md:text-6xl lg:text-7xl"
             >
               Maricar
               <br />
@@ -57,47 +60,50 @@ const Hero = () => {
             </motion.h1>
 
             {/* Animated Title */}
+
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
-              className="mt-6 h-12 bg-gradient-to-r from-primary to-secondary bg-clip-text text-3xl font-bold text-transparent"
+              className="mt-6 h-12 bg-gradient-to-r from-primary to-secondary bg-clip-text text-2xl font-bold text-transparent lg:text-3xl"
             >
               <TypeAnimation
                 sequence={[
-                  "Full Stack Developer",
+                  "Backend Developer",
+                  2000,
+                  "Node.js Developer",
                   2000,
                   "React Developer",
-                  2000,
-                  "Backend Developer",
                   2000,
                   "Computer Science Graduate",
                   2000,
                 ]}
-                speed={40}
+                speed={45}
                 repeat={Infinity}
               />
             </motion.div>
 
             {/* Description */}
+
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8 }}
-              className="mt-8 max-w-lg text-lg leading-9 text-gray-600"
+              className="mt-8 max-w-xl text-lg leading-relaxed text-gray-600"
             >
-              I build modern, scalable, and user-focused web applications using
-              React, Node.js, and Express. As a Computer Science graduate, I
-              enjoy turning ideas into intuitive digital experiences and
-              continuously learning new technologies.
+              Computer Science graduate passionate about building modern,
+              scalable, and user-focused web applications using React, Node.js,
+              and Express. I enjoy creating clean digital experiences while
+              continuously improving my skills as a software engineer.
             </motion.p>
 
             {/* Buttons */}
+
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1 }}
-              className="mt-10 flex gap-5"
+              className="mt-10 flex flex-col gap-4 sm:flex-row"
             >
               <Button>
                 View Projects
@@ -109,42 +115,61 @@ const Hero = () => {
                 <Download size={20} />
               </Button>
             </motion.div>
+
+            {/* Quick Stats */}
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.4 }}
+              className="mt-12 flex flex-wrap gap-10"
+            >
+              <div>
+                <h3 className="text-3xl font-bold text-primary">6+</h3>
+                <p className="text-gray-600">Projects</p>
+              </div>
+
+              <div>
+                <h3 className="text-3xl font-bold text-primary">15+</h3>
+                <p className="text-gray-600">Technologies</p>
+              </div>
+
+              <div>
+                <h3 className="text-3xl font-bold text-primary">1</h3>
+                <p className="text-gray-600">Internship</p>
+              </div>
+            </motion.div>
           </motion.div>
 
-          {/* RIGHT SIDE */}
+          {/* ================= RIGHT ================= */}
+
           <motion.div
             initial={{ opacity: 0, x: 60 }}
-            animate={{
-              opacity: 1,
-              x: 0,
-              y: [0, -10, 0],
-            }}
-            transition={{
-              duration: 1,
-              y: {
-                duration: 5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              },
-            }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
             className="relative flex justify-center"
           >
-            {/* Glow */}
-            <div className="absolute -inset-6 rounded-[50px] bg-primary/20 blur-3xl"></div>
+            <div className="absolute -inset-8 rounded-[50px] bg-primary/20 blur-3xl"></div>
 
-            {/* Image */}
             <motion.div
+              animate={{
+                y: [0, -12, 0],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
               whileHover={{
                 scale: 1.03,
                 rotate: -1,
               }}
-              transition={{ duration: 0.3 }}
-              className="relative overflow-hidden rounded-[40px] border-4 border-white shadow-[0_30px_70px_rgba(100,130,173,0.30)]"
+              className="relative overflow-hidden rounded-[40px] border-4 border-white shadow-2xl"
             >
               <img
                 src={profile}
-                alt="Maricar"
-                className="w-[420px] object-cover"
+                alt="Maricar Mangulabnan"
+                className="w-[320px] object-cover md:w-[380px] lg:w-[460px]"
               />
             </motion.div>
           </motion.div>
