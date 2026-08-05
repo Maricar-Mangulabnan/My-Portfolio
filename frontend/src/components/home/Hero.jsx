@@ -92,9 +92,9 @@ const Hero = () => {
               className="mt-8 max-w-xl text-lg leading-relaxed text-gray-600"
             >
               Computer Science graduate passionate about building modern,
-              scalable, and user-focused web applications using React, Node.js,
-              and Express. I enjoy creating clean digital experiences while
-              continuously improving my skills as a software engineer.
+              scalable, and user-focused web applications. I enjoy creating
+              clean digital experiences while continuously improving my skills
+              as a software engineer.
             </motion.p>
 
             {/* Buttons */}
@@ -164,6 +164,7 @@ const Hero = () => {
                 scale: 1.03,
                 rotate: -1,
               }}
+              transition={{ duration: 0.3 }}
               className="relative overflow-hidden rounded-[40px] border-4 border-white shadow-2xl"
             >
               <img
