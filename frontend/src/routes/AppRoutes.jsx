@@ -1,5 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 
+import Layout from "../components/layout/Layout";
+
 import Home from "../pages/Home";
 import About from "../pages/About";
 import Projects from "../pages/Projects";
@@ -12,19 +14,21 @@ import NotFound from "../pages/NotFound";
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
 
-      <Route path="/about" element={<About />} />
+        <Route path="/about" element={<About />} />
 
-      <Route path="/projects" element={<Projects />} />
+        <Route path="/projects" element={<Projects />} />
 
-      <Route path="/skills" element={<Skills />} />
+        <Route path="/skills" element={<Skills />} />
 
-      <Route path="/experience" element={<Experience />} />
+        <Route path="/experience" element={<Experience />} />
 
-      <Route path="/certificates" element={<Certificates />} />
+        <Route path="/certificates" element={<Certificates />} />
 
-      <Route path="/contact" element={<Contact />} />
+        <Route path="/contact" element={<Contact />} />
+      </Route>
 
       <Route path="*" element={<NotFound />} />
     </Routes>

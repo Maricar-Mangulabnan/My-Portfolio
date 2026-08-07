@@ -38,7 +38,7 @@ const projects = [
 
 const FeaturedProjects = () => {
   return (
-    <section className="py-15">
+    <section className="py-5">
       <Container>
         {/* Heading */}
         <div className="mx-auto mb-16 max-w-3xl text-center">

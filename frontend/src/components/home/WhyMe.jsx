@@ -36,7 +36,7 @@ const reasons = [
 
 const WhyWorkWithMe = () => {
   return (
-    <section className="py-28">
+    <section className="py-5">
       <Container>
         {/* Heading */}
         <div className="mx-auto mb-20 max-w-3xl text-center">

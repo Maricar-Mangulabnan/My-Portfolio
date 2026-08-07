@@ -85,18 +85,6 @@ const Hero = () => {
 
             {/* Description */}
 
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8 }}
-              className="mt-8 max-w-xl text-lg leading-relaxed text-gray-600"
-            >
-              Computer Science graduate passionate about building modern,
-              scalable, and user-focused web applications. I enjoy creating
-              clean digital experiences while continuously improving my skills
-              as a software engineer.
-            </motion.p>
-
             {/* Buttons */}
 
             <motion.div

@@ -1,6 +1,5 @@
 import Hero from "../components/home/Hero";
 import FeaturedSkills from "../components/home/FeaturedSkills";
-import FeaturedProjects from "../components/home/FeaturedProjects";
 import WhyMe from "../components/home/WhyMe";
 import Navbar from "../components/layout/navbar/Navbar";
 
@@ -13,7 +12,6 @@ const Home = () => {
       <Navbar />
       <Hero />
       <FeaturedSkills />
-      <FeaturedProjects />
       <WhyMe />
     </>
   );
