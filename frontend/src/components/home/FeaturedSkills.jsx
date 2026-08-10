@@ -46,10 +46,6 @@ const FeaturedSkills = () => {
           viewport={{ once: true }}
           className="mx-auto mb-20 max-w-3xl text-center"
         >
-          <p className="font-semibold uppercase tracking-[0.3em] text-primary">
-            HOW I BUILD SOFTWARE
-          </p>
-
           <h2 className="mt-5 text-4xl font-bold text-slate-800 md:text-5xl">
             Technologies Behind My Work
           </h2>
@@ -137,30 +133,6 @@ const FeaturedSkills = () => {
             })}
           </div>
         </motion.div>
-
-        {/* Bottom Summary */}
-
-        <div className="mt-16 grid gap-8 text-center md:grid-cols-3">
-          <div>
-            <h3 className="text-4xl font-bold text-primary">11+</h3>
-
-            <p className="mt-2 text-slate-500">Technologies Used</p>
-          </div>
-
-          <div>
-            <h3 className="text-4xl font-bold text-primary">Full Stack</h3>
-
-            <p className="mt-2 text-slate-500">
-              Frontend & Backend Development
-            </p>
-          </div>
-
-          <div>
-            <h3 className="text-4xl font-bold text-primary">Always</h3>
-
-            <p className="mt-2 text-slate-500">Learning & Improving</p>
-          </div>
-        </div>
 
         {/* Button */}
 

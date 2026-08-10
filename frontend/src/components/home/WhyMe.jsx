@@ -36,14 +36,10 @@ const reasons = [
 
 const WhyWorkWithMe = () => {
   return (
-    <section className="py-5">
+    <section className="py-2">
       <Container>
         {/* Heading */}
         <div className="mx-auto mb-20 max-w-3xl text-center">
-          <p className="font-semibold uppercase tracking-[0.25em] text-primary">
-            Why Choose Me
-          </p>
-
           <h2 className="mt-4 text-4xl font-bold text-slate-800 md:text-5xl">
             What I Bring to the Team
           </h2>
