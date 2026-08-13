@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   FaGithub,
@@ -5,6 +6,8 @@ import {
   FaMobileAlt,
   FaDatabase,
   FaCode,
+  FaPlay,
+  FaTimes,
 } from "react-icons/fa";
 
 import {
@@ -16,8 +19,11 @@ import {
   SiPhp,
   SiMysql,
   SiBootstrap,
-  SiJavascript,
 } from "react-icons/si";
+
+// AirBank assets
+import airbankLogo from "../assets/projects/airbank/airbank-logo.png";
+import airbankDemo from "../assets/projects/airbank/airbank-demo.mp4";
 
 const projects = [
   {
@@ -32,7 +38,7 @@ const projects = [
       { name: "Database", icon: <FaDatabase /> },
     ],
     type: "Featured Project",
-    featured: true,
+    logo: null,
     github: "#",
     demo: "#",
   },
@@ -49,8 +55,8 @@ const projects = [
       { name: "Database", icon: <FaDatabase /> },
     ],
     type: "Mobile + Backend",
+    logo: airbankLogo,
     github: "#",
-    demo: "#",
   },
 
   {
@@ -64,6 +70,7 @@ const projects = [
       { name: "Bootstrap", icon: <SiBootstrap /> },
     ],
     type: "Web Application",
+    logo: null,
     github: "#",
     demo: "#",
   },
@@ -80,12 +87,15 @@ const projects = [
       { name: "Tailwind CSS", icon: <SiTailwindcss /> },
     ],
     type: "Full Stack",
+    logo: null,
     github: "#",
     demo: "#",
   },
 ];
 
 const Projects = () => {
+  const [showAirbankVideo, setShowAirbankVideo] = useState(false);
+
   return (
     <section className="min-h-screen bg-[#F5EDED] px-6 py-24">
       <div className="mx-auto max-w-6xl">
@@ -135,35 +145,44 @@ const Projects = () => {
               whileHover={{
                 y: -5,
               }}
-              className={`overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:border-[#6482AD]/40 hover:shadow-xl ${
-                project.featured ? "lg:grid lg:grid-cols-5" : ""
-              }`}
+              className="overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:border-[#6482AD]/40 hover:shadow-xl lg:grid lg:grid-cols-5"
             >
-              {/* Project Visual */}
-              <div
-                className={`relative flex min-h-[260px] items-center justify-center overflow-hidden bg-[#E2DAD6] ${
-                  project.featured ? "lg:col-span-2 lg:min-h-[420px]" : ""
-                }`}
-              >
+              {/* ============================================ */}
+              {/* LEFT - PROJECT VISUAL */}
+              {/* ============================================ */}
+
+              <div className="relative flex min-h-[420px] items-center justify-center overflow-hidden bg-[#E2DAD6] lg:col-span-2">
+                {/* Decorative Glow */}
                 <div className="absolute h-64 w-64 rounded-full bg-[#6482AD]/10 blur-3xl" />
 
                 <div className="relative text-center">
-                  <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-3xl bg-[#6482AD] text-4xl font-bold text-white shadow-xl">
-                    {project.title.charAt(0)}
-                  </div>
+                  {/* Project Logo */}
+                  {project.logo ? (
+                    <div className="mx-auto flex h-32 w-32 items-center justify-center overflow-hidden rounded-3xl bg-white p-4 shadow-xl">
+                      <img
+                        src={project.logo}
+                        alt={`${project.title} logo`}
+                        className="h-full w-full object-contain"
+                      />
+                    </div>
+                  ) : (
+                    <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-3xl bg-[#6482AD] text-4xl font-bold text-white shadow-xl">
+                      {project.title.charAt(0)}
+                    </div>
+                  )}
 
+                  {/* Project Type */}
                   <p className="mt-5 text-sm font-semibold uppercase tracking-[0.2em] text-[#6482AD]">
                     {project.type}
                   </p>
                 </div>
               </div>
 
-              {/* Project Content */}
-              <div
-                className={`p-8 md:p-10 ${
-                  project.featured ? "lg:col-span-3 lg:p-12" : ""
-                }`}
-              >
+              {/* ============================================ */}
+              {/* RIGHT - PROJECT CONTENT */}
+              {/* ============================================ */}
+
+              <div className="p-8 md:p-10 lg:col-span-3 lg:p-12">
                 <span className="text-sm font-semibold uppercase tracking-[0.2em] text-[#6482AD]">
                   {project.subtitle}
                 </span>
@@ -192,6 +211,7 @@ const Projects = () => {
 
                 {/* Buttons */}
                 <div className="mt-8 flex flex-wrap gap-3">
+                  {/* GitHub */}
                   <a
                     href={project.github}
                     className="inline-flex items-center gap-2 rounded-full bg-[#6482AD] px-6 py-3 font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
@@ -200,19 +220,64 @@ const Projects = () => {
                     GitHub
                   </a>
 
-                  <a
-                    href={project.demo}
-                    className="inline-flex items-center gap-2 rounded-full border border-[#6482AD] px-6 py-3 font-semibold text-[#6482AD] transition-all duration-300 hover:-translate-y-1 hover:bg-[#6482AD] hover:text-white"
-                  >
-                    <FaExternalLinkAlt />
-                    View Project
-                  </a>
+                  {/* AirBank */}
+                  {project.title === "AirBank" ? (
+                    <button
+                      type="button"
+                      onClick={() => setShowAirbankVideo(true)}
+                      className="inline-flex items-center gap-2 rounded-full border border-[#6482AD] px-6 py-3 font-semibold text-[#6482AD] transition-all duration-300 hover:-translate-y-1 hover:bg-[#6482AD] hover:text-white"
+                    >
+                      <FaPlay />
+                      Watch Demo
+                    </button>
+                  ) : (
+                    <a
+                      href={project.demo}
+                      className="inline-flex items-center gap-2 rounded-full border border-[#6482AD] px-6 py-3 font-semibold text-[#6482AD] transition-all duration-300 hover:-translate-y-1 hover:bg-[#6482AD] hover:text-white"
+                    >
+                      <FaExternalLinkAlt />
+                      View Project
+                    </a>
+                  )}
                 </div>
               </div>
             </motion.article>
           ))}
         </div>
       </div>
+
+      {/* ============================================ */}
+      {/* AIRBANK VIDEO MODAL */}
+      {/* ============================================ */}
+
+      {showAirbankVideo && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/80 p-6 backdrop-blur-sm"
+          onClick={() => setShowAirbankVideo(false)}
+        >
+          <div
+            className="relative w-full max-w-4xl overflow-hidden rounded-3xl bg-white shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close */}
+            <button
+              type="button"
+              onClick={() => setShowAirbankVideo(false)}
+              className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-slate-900/70 text-white transition hover:bg-slate-900"
+            >
+              <FaTimes />
+            </button>
+
+            {/* Video */}
+            <video
+              src={airbankDemo}
+              controls
+              autoPlay
+              className="max-h-[80vh] w-full bg-black"
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 };
