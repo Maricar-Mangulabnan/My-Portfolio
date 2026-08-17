@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   FaGithub,
@@ -7,7 +6,6 @@ import {
   FaDatabase,
   FaCode,
   FaPlay,
-  FaTimes,
 } from "react-icons/fa";
 
 import {
@@ -21,9 +19,8 @@ import {
   SiBootstrap,
 } from "react-icons/si";
 
-// AirBank assets
+// AirBank logo
 import airbankLogo from "../assets/projects/airbank/airbank-logo.png";
-import airbankDemo from "../assets/projects/airbank/airbank-demo.mp4";
 
 const projects = [
   {
@@ -38,7 +35,6 @@ const projects = [
       { name: "Database", icon: <FaDatabase /> },
     ],
     type: "Featured Project",
-    logo: null,
     github: "#",
     demo: "#",
   },
@@ -55,8 +51,13 @@ const projects = [
       { name: "Database", icon: <FaDatabase /> },
     ],
     type: "Mobile + Backend",
+    github: "https://github.com/Maricar-Mangulabnan/airbank-client.git",
+
+    // Put your Google Drive video link here
+    demo: "https://drive.google.com/drive/folders/1rqkCbuKsbbQGxOoSwSJfzF5Anp0Q2izY?usp=sharing",
+
     logo: airbankLogo,
-    github: "#",
+    isAirbank: true,
   },
 
   {
@@ -70,7 +71,6 @@ const projects = [
       { name: "Bootstrap", icon: <SiBootstrap /> },
     ],
     type: "Web Application",
-    logo: null,
     github: "#",
     demo: "#",
   },
@@ -87,15 +87,12 @@ const projects = [
       { name: "Tailwind CSS", icon: <SiTailwindcss /> },
     ],
     type: "Full Stack",
-    logo: null,
     github: "#",
     demo: "#",
   },
 ];
 
 const Projects = () => {
-  const [showAirbankVideo, setShowAirbankVideo] = useState(false);
-
   return (
     <section className="min-h-screen bg-[#F5EDED] px-6 py-24">
       <div className="mx-auto max-w-6xl">
@@ -147,40 +144,38 @@ const Projects = () => {
               }}
               className="overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:border-[#6482AD]/40 hover:shadow-xl lg:grid lg:grid-cols-5"
             >
-              {/* ============================================ */}
-              {/* LEFT - PROJECT VISUAL */}
-              {/* ============================================ */}
+              {/* ================================================= */}
+              {/* PROJECT PREVIEW */}
+              {/* ================================================= */}
 
               <div className="relative flex min-h-[420px] items-center justify-center overflow-hidden bg-[#E2DAD6] lg:col-span-2">
                 {/* Decorative Glow */}
                 <div className="absolute h-64 w-64 rounded-full bg-[#6482AD]/10 blur-3xl" />
 
                 <div className="relative text-center">
-                  {/* Project Logo */}
-                  {project.logo ? (
-                    <div className="mx-auto flex h-32 w-32 items-center justify-center overflow-hidden rounded-3xl bg-white p-4 shadow-xl">
-                      <img
-                        src={project.logo}
-                        alt={`${project.title} logo`}
-                        className="h-full w-full object-contain"
-                      />
-                    </div>
+                  {/* AirBank Logo */}
+                  {project.isAirbank ? (
+                    <img
+                      src={project.logo}
+                      alt="AirBank logo"
+                      className="mx-auto h-32 w-32 rounded-3xl object-cover shadow-xl"
+                    />
                   ) : (
+                    /* Other Projects */
                     <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-3xl bg-[#6482AD] text-4xl font-bold text-white shadow-xl">
                       {project.title.charAt(0)}
                     </div>
                   )}
 
-                  {/* Project Type */}
                   <p className="mt-5 text-sm font-semibold uppercase tracking-[0.2em] text-[#6482AD]">
                     {project.type}
                   </p>
                 </div>
               </div>
 
-              {/* ============================================ */}
-              {/* RIGHT - PROJECT CONTENT */}
-              {/* ============================================ */}
+              {/* ================================================= */}
+              {/* PROJECT CONTENT */}
+              {/* ================================================= */}
 
               <div className="p-8 md:p-10 lg:col-span-3 lg:p-12">
                 <span className="text-sm font-semibold uppercase tracking-[0.2em] text-[#6482AD]">
@@ -214,25 +209,30 @@ const Projects = () => {
                   {/* GitHub */}
                   <a
                     href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 rounded-full bg-[#6482AD] px-6 py-3 font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
                   >
                     <FaGithub />
                     GitHub
                   </a>
 
-                  {/* AirBank */}
-                  {project.title === "AirBank" ? (
-                    <button
-                      type="button"
-                      onClick={() => setShowAirbankVideo(true)}
+                  {/* AirBank Demo */}
+                  {project.isAirbank ? (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 rounded-full border border-[#6482AD] px-6 py-3 font-semibold text-[#6482AD] transition-all duration-300 hover:-translate-y-1 hover:bg-[#6482AD] hover:text-white"
                     >
                       <FaPlay />
                       Watch Demo
-                    </button>
+                    </a>
                   ) : (
                     <a
                       href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 rounded-full border border-[#6482AD] px-6 py-3 font-semibold text-[#6482AD] transition-all duration-300 hover:-translate-y-1 hover:bg-[#6482AD] hover:text-white"
                     >
                       <FaExternalLinkAlt />
@@ -245,39 +245,6 @@ const Projects = () => {
           ))}
         </div>
       </div>
-
-      {/* ============================================ */}
-      {/* AIRBANK VIDEO MODAL */}
-      {/* ============================================ */}
-
-      {showAirbankVideo && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/80 p-6 backdrop-blur-sm"
-          onClick={() => setShowAirbankVideo(false)}
-        >
-          <div
-            className="relative w-full max-w-4xl overflow-hidden rounded-3xl bg-white shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Close */}
-            <button
-              type="button"
-              onClick={() => setShowAirbankVideo(false)}
-              className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-slate-900/70 text-white transition hover:bg-slate-900"
-            >
-              <FaTimes />
-            </button>
-
-            {/* Video */}
-            <video
-              src={airbankDemo}
-              controls
-              autoPlay
-              className="max-h-[80vh] w-full bg-black"
-            />
-          </div>
-        </div>
-      )}
     </section>
   );
 };
