@@ -1,6 +1,8 @@
 import { ArrowRight, Download } from "lucide-react";
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import resume from "../../assets/resume/Maricar-Mangulabnan-Resume.pdf"; // <-- replace with your resume
 
 import profile from "../../assets/images/profile.png";
 
@@ -93,15 +95,34 @@ const Hero = () => {
               transition={{ delay: 1 }}
               className="mt-10 flex flex-col gap-4 sm:flex-row"
             >
-              <Button>
-                View Projects
-                <ArrowRight size={20} />
-              </Button>
+              <Link to="/projects">
+                <Button>
+                  View Projects
+                  <ArrowRight size={20} />
+                </Button>
+              </Link>
 
-              <Button outline>
+              <a
+                href={resume}
+                download="Maricar-Mangulabnan-Resume.pdf"
+                className="
+    inline-flex items-center gap-2
+    rounded-xl
+    border border-primary
+    px-6 py-3
+    font-semibold
+    text-primary
+    transition-all
+    duration-300
+    hover:bg-primary
+    hover:text-white
+    hover:scale-105
+    active:scale-95
+  "
+              >
                 Download Resume
                 <Download size={20} />
-              </Button>
+              </a>
             </motion.div>
 
             {/* Quick Stats */}

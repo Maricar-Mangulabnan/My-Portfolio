@@ -1,6 +1,6 @@
 import { Download } from "lucide-react";
 import { NavLink, Link } from "react-router-dom";
-
+import resume from "../../../assets/resume/Maricar-Mangulabnan-Resume.pdf"; // <-- replace with your resume
 import logo from "../../../assets/images/logo.png"; // <-- replace with your logo
 
 const navItems = [
@@ -85,24 +85,26 @@ function Navbar() {
 
         {/* Resume */}
 
-        <button
+        <a
+          href={resume}
+          download="Maricar-Mangulabnan-Resume.pdf"
           className="
-            flex items-center gap-2
-            rounded-xl
-            bg-primary
-            px-5 py-3
-            font-semibold
-            text-white
-            transition-all
-            duration-300
-            hover:scale-105
-            hover:shadow-xl
-            active:scale-95
-          "
+    flex items-center gap-2
+    rounded-xl
+    bg-primary
+    px-5 py-3
+    font-semibold
+    text-white
+    transition-all
+    duration-300
+    hover:scale-105
+    hover:shadow-xl
+    active:scale-95
+  "
         >
           Resume
           <Download size={17} />
-        </button>
+        </a>
       </nav>
     </header>
   );
