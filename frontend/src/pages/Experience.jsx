@@ -36,7 +36,7 @@ const Experience = () => {
   };
 
   return (
-    <section className="min-h-screen bg-[#F5EDED] px-4 py-16 sm:px-6 sm:py-20 md:py-24">
+    <section className="min-h-screen bg-[#F5EDED] px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-6xl">
         {/* Heading */}
         <motion.div
@@ -44,9 +44,9 @@ const Experience = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mx-auto mb-12 max-w-3xl text-center sm:mb-16"
+          className="mx-auto mb-10 max-w-3xl text-center sm:mb-14 lg:mb-16"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#6482AD] sm:text-sm sm:tracking-[0.3em]">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#6482AD] sm:text-sm sm:tracking-[0.3em]">
             EXPERIENCE
           </p>
 
@@ -54,7 +54,7 @@ const Experience = () => {
             My Experience
           </h1>
 
-          <p className="mt-4 text-sm leading-7 text-slate-500 sm:mt-6 sm:text-lg sm:leading-8">
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-500 sm:mt-6 sm:text-lg sm:leading-8">
             My professional experience, internship, and the skills I developed
             throughout my journey as a Computer Science graduate.
           </p>
@@ -66,17 +66,14 @@ const Experience = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:border-[#6482AD]/40 hover:shadow-xl sm:rounded-[32px]"
+          className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:border-[#6482AD]/40 hover:shadow-xl sm:rounded-[32px]"
         >
           <div className="grid lg:grid-cols-5">
-            {/* ================================================= */}
             {/* LEFT SIDE - COMPANY LOGO */}
-            {/* ================================================= */}
-
-            <div className="flex min-h-[300px] items-center justify-center bg-[#E2DAD6] p-6 sm:min-h-[360px] sm:p-8 lg:min-h-[420px] lg:col-span-2">
-              <div className="flex flex-col items-center justify-center text-center">
+            <div className="flex min-h-[270px] items-center justify-center bg-[#E2DAD6] p-6 sm:min-h-[330px] sm:p-8 lg:col-span-2 lg:min-h-[420px]">
+              <div className="flex w-full flex-col items-center justify-center text-center">
                 {/* Company Logo */}
-                <div className="flex h-40 w-40 items-center justify-center sm:h-48 sm:w-48 lg:h-56 lg:w-56">
+                <div className="flex h-32 w-32 items-center justify-center sm:h-44 sm:w-44 lg:h-56 lg:w-56">
                   <img
                     src={bizsolutionsLogo}
                     alt="BizSolutions LLC logo"
@@ -91,7 +88,7 @@ const Experience = () => {
                     setSelectedPhoto(0);
                     setShowPhotos(true);
                   }}
-                  className="mt-6 inline-flex items-center gap-2 rounded-full border border-[#6482AD] px-5 py-2.5 text-sm font-semibold text-[#6482AD] transition-all duration-300 hover:-translate-y-1 hover:bg-[#6482AD] hover:text-white hover:shadow-lg sm:mt-8 sm:px-6 sm:py-3 sm:text-base"
+                  className="mt-5 inline-flex items-center gap-2 rounded-full border border-[#6482AD] px-5 py-2.5 text-sm font-semibold text-[#6482AD] transition-all duration-300 hover:-translate-y-1 hover:bg-[#6482AD] hover:text-white hover:shadow-lg sm:mt-7 sm:px-6 sm:py-3 sm:text-base"
                 >
                   <FaImages />
                   View Photos
@@ -99,12 +96,9 @@ const Experience = () => {
               </div>
             </div>
 
-            {/* ================================================= */}
             {/* RIGHT SIDE - EXPERIENCE DETAILS */}
-            {/* ================================================= */}
-
-            <div className="p-6 sm:p-8 md:p-10 lg:col-span-3 lg:p-12">
-              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#6482AD] sm:text-sm sm:tracking-[0.2em]">
+            <div className="min-w-0 p-5 sm:p-8 md:p-10 lg:col-span-3 lg:p-12">
+              <span className="text-[11px] font-semibold uppercase tracking-[0.15em] text-[#6482AD] sm:text-sm sm:tracking-[0.2em]">
                 Professional Experience
               </span>
 
@@ -116,7 +110,7 @@ const Experience = () => {
                 BizSolutions LLC · US (Remote) · 2025
               </p>
 
-              <p className="mt-5 text-sm leading-7 text-slate-500 sm:text-base sm:leading-7">
+              <p className="mt-4 text-sm leading-7 text-slate-500 sm:mt-5 sm:text-base">
                 Contributed to client-facing web application features while
                 gaining hands-on experience in React.js, Tailwind CSS,
                 collaborative development, and Agile software development
@@ -125,10 +119,10 @@ const Experience = () => {
 
               {/* Experience Highlights */}
               <div className="mt-6 space-y-4 sm:mt-7">
-                <div className="flex gap-3">
+                <div className="flex items-start gap-3">
                   <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#6482AD]" />
 
-                  <p className="text-sm leading-7 text-slate-500 sm:text-base">
+                  <p className="min-w-0 text-sm leading-7 text-slate-500 sm:text-base">
                     Contributed to 10+ client-facing web application features
                     across multiple sprint cycles, delivering production-ready
                     React.js components aligned with project deadlines and
@@ -136,30 +130,30 @@ const Experience = () => {
                   </p>
                 </div>
 
-                <div className="flex gap-3">
+                <div className="flex items-start gap-3">
                   <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#6482AD]" />
 
-                  <p className="text-sm leading-7 text-slate-500 sm:text-base">
+                  <p className="min-w-0 text-sm leading-7 text-slate-500 sm:text-base">
                     Built and maintained reusable, responsive UI components
                     using React.js and Tailwind CSS, reducing redundant
                     front-end code and accelerating feature delivery.
                   </p>
                 </div>
 
-                <div className="flex gap-3">
+                <div className="flex items-start gap-3">
                   <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#6482AD]" />
 
-                  <p className="text-sm leading-7 text-slate-500 sm:text-base">
+                  <p className="min-w-0 text-sm leading-7 text-slate-500 sm:text-base">
                     Participated in Agile Scrum ceremonies, daily standups,
                     sprint planning, and retrospectives while collaborating
                     asynchronously with a US-based development team.
                   </p>
                 </div>
 
-                <div className="flex gap-3">
+                <div className="flex items-start gap-3">
                   <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#6482AD]" />
 
-                  <p className="text-sm leading-7 text-slate-500 sm:text-base">
+                  <p className="min-w-0 text-sm leading-7 text-slate-500 sm:text-base">
                     Managed source code and pull requests through GitHub,
                     maintaining clean commits and supporting code review and
                     deployment workflows.
@@ -168,24 +162,24 @@ const Experience = () => {
               </div>
 
               {/* Skills */}
-              <div className="mt-7 flex flex-wrap gap-2.5 sm:mt-8 sm:gap-3">
+              <div className="mt-7 flex flex-wrap gap-2 sm:mt-8">
                 <div className="flex items-center gap-2 rounded-full border border-slate-200 bg-[#F5EDED] px-3 py-1.5 text-xs font-medium text-slate-700 sm:px-4 sm:py-2 sm:text-sm">
-                  <SiNodedotjs className="text-[#6482AD]" />
+                  <SiNodedotjs className="shrink-0 text-[#6482AD]" />
                   Node.js
                 </div>
 
                 <div className="flex items-center gap-2 rounded-full border border-slate-200 bg-[#F5EDED] px-3 py-1.5 text-xs font-medium text-slate-700 sm:px-4 sm:py-2 sm:text-sm">
-                  <SiExpress className="text-[#6482AD]" />
+                  <SiExpress className="shrink-0 text-[#6482AD]" />
                   Express
                 </div>
 
                 <div className="flex items-center gap-2 rounded-full border border-slate-200 bg-[#F5EDED] px-3 py-1.5 text-xs font-medium text-slate-700 sm:px-4 sm:py-2 sm:text-sm">
-                  <FaCode className="text-[#6482AD]" />
+                  <FaCode className="shrink-0 text-[#6482AD]" />
                   SDLC
                 </div>
 
                 <div className="flex items-center gap-2 rounded-full border border-slate-200 bg-[#F5EDED] px-3 py-1.5 text-xs font-medium text-slate-700 sm:px-4 sm:py-2 sm:text-sm">
-                  <FaProjectDiagram className="text-[#6482AD]" />
+                  <FaProjectDiagram className="shrink-0 text-[#6482AD]" />
                   Agile Scrum
                 </div>
               </div>
@@ -194,34 +188,31 @@ const Experience = () => {
         </motion.article>
       </div>
 
-      {/* ================================================= */}
       {/* PHOTO GALLERY MODAL */}
-      {/* ================================================= */}
-
       {showPhotos && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/80 p-3 backdrop-blur-sm sm:p-6"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/80 p-2 backdrop-blur-sm sm:p-6"
           onClick={() => setShowPhotos(false)}
         >
           <div
-            className="relative w-full max-w-5xl"
+            className="relative flex w-full max-w-5xl flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close */}
             <button
               type="button"
               onClick={() => setShowPhotos(false)}
-              className="absolute right-2 top-2 z-20 flex h-9 w-9 items-center justify-center rounded-full bg-slate-900/70 text-sm text-white transition hover:bg-slate-900 sm:h-10 sm:w-10"
+              className="absolute right-1 top-1 z-20 flex h-9 w-9 items-center justify-center rounded-full bg-slate-900/70 text-sm text-white transition hover:bg-slate-900 sm:right-2 sm:top-2 sm:h-10 sm:w-10"
             >
               <FaTimes />
             </button>
 
             {/* Main Image */}
-            <div className="overflow-hidden rounded-2xl bg-white p-2 shadow-2xl sm:rounded-3xl sm:p-3">
+            <div className="w-full overflow-hidden rounded-2xl bg-white p-1.5 shadow-2xl sm:rounded-3xl sm:p-3">
               <img
                 src={internshipPhotos[selectedPhoto]}
                 alt={`Internship photo ${selectedPhoto + 1}`}
-                className="max-h-[72vh] w-full rounded-xl object-contain sm:max-h-[75vh] sm:rounded-2xl"
+                className="mx-auto max-h-[70vh] w-full rounded-xl object-contain sm:max-h-[75vh] sm:rounded-2xl"
               />
             </div>
 
@@ -229,7 +220,7 @@ const Experience = () => {
             <button
               type="button"
               onClick={previousPhoto}
-              className="absolute left-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white text-sm text-[#6482AD] shadow-lg transition hover:scale-105 sm:left-6 sm:h-12 sm:w-12 sm:text-base"
+              className="absolute left-1 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white text-sm text-[#6482AD] shadow-lg transition hover:scale-105 sm:left-5 sm:h-12 sm:w-12 sm:text-base"
             >
               <FaChevronLeft />
             </button>
@@ -238,13 +229,13 @@ const Experience = () => {
             <button
               type="button"
               onClick={nextPhoto}
-              className="absolute right-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white text-sm text-[#6482AD] shadow-lg transition hover:scale-105 sm:right-6 sm:h-12 sm:w-12 sm:text-base"
+              className="absolute right-1 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white text-sm text-[#6482AD] shadow-lg transition hover:scale-105 sm:right-5 sm:h-12 sm:w-12 sm:text-base"
             >
               <FaChevronRight />
             </button>
 
             {/* Photo Counter */}
-            <div className="mt-3 text-center text-xs font-semibold text-white sm:mt-4 sm:text-sm">
+            <div className="mt-3 text-xs font-semibold text-white sm:mt-4 sm:text-sm">
               {selectedPhoto + 1} / {internshipPhotos.length}
             </div>
           </div>

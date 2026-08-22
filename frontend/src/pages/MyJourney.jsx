@@ -6,6 +6,7 @@ import {
   FaLaptopCode,
   FaBookOpen,
 } from "react-icons/fa";
+
 import Container from "../components/common/Container";
 
 const journey = [
@@ -61,7 +62,7 @@ const journey = [
 
 const MyJourney = () => {
   return (
-    <section className="bg-[#F5EDED] py-24">
+    <section className="bg-[#F5EDED] py-16 sm:py-20 lg:py-24">
       <Container>
         {/* Section Heading */}
         <motion.div
@@ -69,17 +70,17 @@ const MyJourney = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mx-auto mb-16 max-w-3xl text-center"
+          className="mx-auto mb-12 max-w-3xl px-2 text-center sm:mb-16"
         >
-          <span className="text-sm font-semibold tracking-[0.35em] text-[#6482AD]">
+          <span className="text-xs font-semibold tracking-[0.25em] text-[#6482AD] sm:text-sm sm:tracking-[0.35em]">
             MY JOURNEY
           </span>
 
-          <h2 className="mt-4 text-4xl font-bold text-slate-800 md:text-5xl">
+          <h2 className="mt-3 text-3xl font-bold leading-tight text-slate-800 sm:mt-4 sm:text-4xl md:text-5xl">
             From Student to Developer
           </h2>
 
-          <p className="mt-5 text-lg leading-8 text-[#6482AD]">
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-[#6482AD] sm:mt-5 sm:text-lg sm:leading-8">
             A look at the experiences and milestones that shaped my journey into
             software development.
           </p>
@@ -96,11 +97,11 @@ const MyJourney = () => {
               h-full
               w-px
               bg-[#6482AD]/25
-              md:left-[140px]
+              md:left-[139px]
             "
           />
 
-          <div className="space-y-10">
+          <div className="space-y-8 sm:space-y-10">
             {journey.map((item, index) => (
               <motion.div
                 key={`${item.year}-${item.title}`}
@@ -114,15 +115,16 @@ const MyJourney = () => {
                 className="
                   relative
                   grid
-                  grid-cols-[80px_1fr]
-                  gap-6
+                  grid-cols-[1fr]
+                  pl-8
                   md:grid-cols-[140px_1fr]
                   md:gap-8
+                  md:pl-0
                 "
               >
-                {/* Year */}
-                <div className="pt-4 text-right md:pr-8">
-                  <span className="hidden text-sm font-bold text-[#6482AD] md:block">
+                {/* Year - Desktop */}
+                <div className="hidden pt-4 text-right md:block md:pr-8">
+                  <span className="text-sm font-bold text-[#6482AD]">
                     {item.year}
                   </span>
                 </div>
@@ -140,7 +142,7 @@ const MyJourney = () => {
                     border-4
                     border-[#F5EDED]
                     bg-[#6482AD]
-                    md:left-[132px]
+                    md:left-[131px]
                   "
                 />
 
@@ -148,29 +150,33 @@ const MyJourney = () => {
                 <motion.div
                   whileHover={{ y: -3 }}
                   className="
+                    min-w-0
                     rounded-2xl
                     border
                     border-slate-200
                     bg-white
-                    px-6
+                    px-4
                     py-5
                     shadow-sm
                     transition-all
                     duration-300
                     hover:border-[#6482AD]/40
                     hover:shadow-md
+                    sm:px-6
                     md:px-7
                   "
                 >
                   {/* Mobile Year */}
-                  <div className="mb-2 flex items-center gap-3 md:hidden">
+                  <div className="mb-3 flex items-center gap-3 md:hidden">
                     <span className="text-sm font-bold text-[#6482AD]">
                       {item.year}
                     </span>
+
+                    <div className="h-px flex-1 bg-[#6482AD]/15" />
                   </div>
 
                   {/* Title Row */}
-                  <div className="flex items-start gap-4">
+                  <div className="flex min-w-0 items-start gap-3 sm:gap-4">
                     {/* Icon */}
                     <div
                       className="
@@ -190,12 +196,12 @@ const MyJourney = () => {
                     </div>
 
                     {/* Title + Description */}
-                    <div className="flex-1">
-                      <h3 className="text-lg font-bold text-slate-800 md:text-xl">
+                    <div className="min-w-0 flex-1">
+                      <h3 className="break-words text-base font-bold leading-6 text-slate-800 sm:text-lg md:text-xl">
                         {item.title}
                       </h3>
 
-                      <p className="mt-2 text-sm leading-6 text-slate-500 md:text-base">
+                      <p className="mt-2 text-sm leading-6 text-slate-500 sm:text-base">
                         {item.description}
                       </p>
                     </div>
@@ -207,6 +213,7 @@ const MyJourney = () => {
                       <span
                         key={tag}
                         className="
+                          max-w-full
                           rounded-full
                           border
                           border-slate-200

@@ -52,10 +52,7 @@ const projects = [
     ],
     type: "Mobile + Backend",
     github: "https://github.com/Maricar-Mangulabnan/airbank-client.git",
-
-    // Put your Google Drive video link here
     demo: "https://drive.google.com/drive/folders/1rqkCbuKsbbQGxOoSwSJfzF5Anp0Q2izY?usp=sharing",
-
     logo: airbankLogo,
     isAirbank: true,
   },
@@ -94,7 +91,7 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section className="min-h-screen bg-[#F5EDED] px-6 py-24">
+    <section className="min-h-screen overflow-hidden bg-[#F5EDED] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
       <div className="mx-auto max-w-6xl">
         {/* Heading */}
         <motion.div
@@ -102,24 +99,24 @@ const Projects = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mx-auto mb-20 max-w-3xl text-center"
+          className="mx-auto mb-12 max-w-3xl text-center sm:mb-16 lg:mb-20"
         >
-          <p className="font-semibold uppercase tracking-[0.3em] text-[#6482AD]">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#6482AD] sm:text-sm sm:tracking-[0.3em]">
             MY PROJECTS
           </p>
 
-          <h1 className="mt-4 text-4xl font-bold text-slate-800 md:text-5xl">
+          <h1 className="mt-3 text-3xl font-bold leading-tight text-slate-800 sm:mt-4 sm:text-4xl md:text-5xl">
             Things I've Built
           </h1>
 
-          <p className="mt-6 text-lg leading-8 text-slate-500">
+          <p className="mt-4 text-base leading-7 text-slate-500 sm:mt-6 sm:text-lg sm:leading-8">
             A collection of projects that showcase my experience in application
             development, backend systems, databases, and full-stack development.
           </p>
         </motion.div>
 
         {/* Projects */}
-        <div className="space-y-10">
+        <div className="space-y-8 sm:space-y-10">
           {projects.map((project, index) => (
             <motion.article
               key={project.title}
@@ -139,35 +136,114 @@ const Projects = () => {
                 once: true,
                 amount: 0.2,
               }}
-              whileHover={{
-                y: -5,
-              }}
-              className="overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:border-[#6482AD]/40 hover:shadow-xl lg:grid lg:grid-cols-5"
+              className="
+                overflow-hidden
+                rounded-2xl
+                border
+                border-slate-200
+                bg-white
+                shadow-sm
+                transition-all
+                duration-300
+                hover:border-[#6482AD]/40
+                hover:shadow-xl
+                sm:rounded-[28px]
+                lg:grid
+                lg:grid-cols-5
+                lg:rounded-[32px]
+              "
             >
               {/* ================================================= */}
               {/* PROJECT PREVIEW */}
               {/* ================================================= */}
 
-              <div className="relative flex min-h-[420px] items-center justify-center overflow-hidden bg-[#E2DAD6] lg:col-span-2">
+              <div
+                className="
+                  relative
+                  flex
+                  min-h-[280px]
+                  items-center
+                  justify-center
+                  overflow-hidden
+                  bg-[#E2DAD6]
+                  sm:min-h-[320px]
+                  lg:col-span-2
+                  lg:min-h-[420px]
+                "
+              >
                 {/* Decorative Glow */}
-                <div className="absolute h-64 w-64 rounded-full bg-[#6482AD]/10 blur-3xl" />
+                <div
+                  className="
+                    absolute
+                    h-48
+                    w-48
+                    rounded-full
+                    bg-[#6482AD]/10
+                    blur-3xl
+                    sm:h-64
+                    sm:w-64
+                  "
+                />
 
-                <div className="relative text-center">
+                <div className="relative px-6 text-center">
                   {/* AirBank Logo */}
                   {project.isAirbank ? (
                     <img
                       src={project.logo}
                       alt="AirBank logo"
-                      className="mx-auto h-32 w-32 rounded-3xl object-cover shadow-xl"
+                      className="
+                        mx-auto
+                        h-24
+                        w-24
+                        rounded-2xl
+                        object-cover
+                        shadow-xl
+                        sm:h-28
+                        sm:w-28
+                        sm:rounded-3xl
+                        lg:h-32
+                        lg:w-32
+                      "
                     />
                   ) : (
                     /* Other Projects */
-                    <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-3xl bg-[#6482AD] text-4xl font-bold text-white shadow-xl">
+                    <div
+                      className="
+                        mx-auto
+                        flex
+                        h-20
+                        w-20
+                        items-center
+                        justify-center
+                        rounded-2xl
+                        bg-[#6482AD]
+                        text-3xl
+                        font-bold
+                        text-white
+                        shadow-xl
+                        sm:h-24
+                        sm:w-24
+                        sm:rounded-3xl
+                        sm:text-4xl
+                      "
+                    >
                       {project.title.charAt(0)}
                     </div>
                   )}
 
-                  <p className="mt-5 text-sm font-semibold uppercase tracking-[0.2em] text-[#6482AD]">
+                  <p
+                    className="
+                      mt-4
+                      text-xs
+                      font-semibold
+                      uppercase
+                      tracking-[0.15em]
+                      text-[#6482AD]
+                      sm:mt-5
+                      sm:text-sm
+                      sm:tracking-[0.2em]
+                    "
+                  >
                     {project.type}
                   </p>
                 </div>
@@ -177,53 +253,153 @@ const Projects = () => {
               {/* PROJECT CONTENT */}
               {/* ================================================= */}
 
-              <div className="p-8 md:p-10 lg:col-span-3 lg:p-12">
-                <span className="text-sm font-semibold uppercase tracking-[0.2em] text-[#6482AD]">
+              <div
+                className="
+                  min-w-0
+                  p-5
+                  sm:p-7
+                  md:p-9
+                  lg:col-span-3
+                  lg:p-12
+                "
+              >
+                {/* Subtitle */}
+                <span
+                  className="
+                    text-xs
+                    font-semibold
+                    uppercase
+                    tracking-[0.15em]
+                    text-[#6482AD]
+                    sm:text-sm
+                    sm:tracking-[0.2em]
+                  "
+                >
                   {project.subtitle}
                 </span>
 
-                <h2 className="mt-3 text-3xl font-bold text-slate-800">
+                {/* Title */}
+                <h2
+                  className="
+                    mt-2
+                    break-words
+                    text-2xl
+                    font-bold
+                    leading-tight
+                    text-slate-800
+                    sm:mt-3
+                    sm:text-3xl
+                  "
+                >
                   {project.title}
                 </h2>
 
-                <p className="mt-5 max-w-2xl leading-7 text-slate-500">
+                {/* Description */}
+                <p
+                  className="
+                    mt-4
+                    text-sm
+                    leading-6
+                    text-slate-500
+                    sm:mt-5
+                    sm:text-base
+                    sm:leading-7
+                  "
+                >
                   {project.description}
                 </p>
 
                 {/* Technologies */}
-                <div className="mt-7 flex flex-wrap gap-3">
+                <div className="mt-5 flex flex-wrap gap-2 sm:mt-7 sm:gap-3">
                   {project.technologies.map((technology) => (
                     <div
                       key={technology.name}
-                      className="flex items-center gap-2 rounded-full border border-slate-200 bg-[#F5EDED] px-4 py-2 text-sm font-medium text-slate-700"
+                      className="
+                        flex
+                        max-w-full
+                        items-center
+                        gap-2
+                        rounded-full
+                        border
+                        border-slate-200
+                        bg-[#F5EDED]
+                        px-3
+                        py-1.5
+                        text-xs
+                        font-medium
+                        text-slate-700
+                        sm:px-4
+                        sm:py-2
+                        sm:text-sm
+                      "
                     >
-                      <span className="text-[#6482AD]">{technology.icon}</span>
+                      <span className="shrink-0 text-[#6482AD]">
+                        {technology.icon}
+                      </span>
 
-                      {technology.name}
+                      <span className="truncate">{technology.name}</span>
                     </div>
                   ))}
                 </div>
 
                 {/* Buttons */}
-                <div className="mt-8 flex flex-wrap gap-3">
+                <div className="mt-6 flex flex-wrap gap-2.5 sm:mt-8 sm:gap-3">
                   {/* GitHub */}
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full bg-[#6482AD] px-6 py-3 font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                    className="
+                      inline-flex
+                      items-center
+                      justify-center
+                      gap-2
+                      rounded-full
+                      bg-[#6482AD]
+                      px-4
+                      py-2.5
+                      text-sm
+                      font-semibold
+                      text-white
+                      transition-all
+                      duration-300
+                      hover:-translate-y-1
+                      hover:shadow-lg
+                      sm:px-6
+                      sm:py-3
+                    "
                   >
                     <FaGithub />
                     GitHub
                   </a>
 
-                  {/* AirBank Demo */}
+                  {/* Demo */}
                   {project.isAirbank ? (
                     <a
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border border-[#6482AD] px-6 py-3 font-semibold text-[#6482AD] transition-all duration-300 hover:-translate-y-1 hover:bg-[#6482AD] hover:text-white"
+                      className="
+                        inline-flex
+                        items-center
+                        justify-center
+                        gap-2
+                        rounded-full
+                        border
+                        border-[#6482AD]
+                        px-4
+                        py-2.5
+                        text-sm
+                        font-semibold
+                        text-[#6482AD]
+                        transition-all
+                        duration-300
+                        hover:-translate-y-1
+                        hover:bg-[#6482AD]
+                        hover:text-white
+                        sm:px-6
+                        sm:py-3
+                      "
                     >
                       <FaPlay />
                       Watch Demo
@@ -233,7 +409,27 @@ const Projects = () => {
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border border-[#6482AD] px-6 py-3 font-semibold text-[#6482AD] transition-all duration-300 hover:-translate-y-1 hover:bg-[#6482AD] hover:text-white"
+                      className="
+                        inline-flex
+                        items-center
+                        justify-center
+                        gap-2
+                        rounded-full
+                        border
+                        border-[#6482AD]
+                        px-4
+                        py-2.5
+                        text-sm
+                        font-semibold
+                        text-[#6482AD]
+                        transition-all
+                        duration-300
+                        hover:-translate-y-1
+                        hover:bg-[#6482AD]
+                        hover:text-white
+                        sm:px-6
+                        sm:py-3
+                      "
                     >
                       <FaExternalLinkAlt />
                       View Project
