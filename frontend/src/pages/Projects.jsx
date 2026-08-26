@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   FaGithub,
@@ -6,6 +7,8 @@ import {
   FaDatabase,
   FaCode,
   FaPlay,
+  FaTimes,
+  FaInfoCircle,
 } from "react-icons/fa";
 
 import {
@@ -28,6 +31,8 @@ const projects = [
     subtitle: "Thesis Project",
     description:
       "An augmented reality gamification system designed to enhance campus engagement by turning campus activities into interactive AR-based quests.",
+    details:
+      "CampusGo is a quest-based augmented reality gamification system developed as a thesis project for SCITE students. It combines AR experiences, quests, rewards, and gamification mechanics to encourage students to explore and engage with the campus.",
     technologies: [
       { name: "Unity", icon: <SiUnity /> },
       { name: "AR Foundation", icon: <FaMobileAlt /> },
@@ -44,6 +49,8 @@ const projects = [
     subtitle: "Full-Stack Mobile Application",
     description:
       "A mobile banking application developed using Flutter's Cupertino widgets for the frontend and a connected backend system for handling application logic and data.",
+    details:
+      "AirBank is a full-stack mobile banking application designed to demonstrate mobile application development, backend integration, and database management. The frontend uses Flutter and Cupertino widgets, while the backend handles application logic and data processing.",
     technologies: [
       { name: "Flutter", icon: <FaMobileAlt /> },
       { name: "Cupertino", icon: <FaMobileAlt /> },
@@ -62,6 +69,8 @@ const projects = [
     subtitle: "Web Application",
     description:
       "A point of sale system developed to manage sales and store information using a PHP backend, MySQL database, and Bootstrap-based interface.",
+    details:
+      "This Point of Sale System was developed to provide a simple and organized way of managing sales and store-related information. The system uses PHP for backend processing, MySQL for data storage, and Bootstrap for the user interface.",
     technologies: [
       { name: "PHP", icon: <SiPhp /> },
       { name: "MySQL", icon: <SiMysql /> },
@@ -77,6 +86,8 @@ const projects = [
     subtitle: "Personal Project",
     description:
       "A personal developer portfolio built to showcase my projects, technical skills, experience, and background while demonstrating my frontend and backend development skills.",
+    details:
+      "This portfolio website was built to present my professional background, projects, technical skills, internship experience, and contact information. It also demonstrates my ability to build responsive interfaces and integrate frontend and backend technologies.",
     technologies: [
       { name: "React", icon: <SiReact /> },
       { name: "Node.js", icon: <SiNodedotjs /> },
@@ -90,6 +101,8 @@ const projects = [
 ];
 
 const Projects = () => {
+  const [selectedProject, setSelectedProject] = useState(null);
+
   return (
     <section className="min-h-screen overflow-hidden bg-[#F5EDED] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
       <div className="mx-auto max-w-6xl">
@@ -342,41 +355,46 @@ const Projects = () => {
                   ))}
                 </div>
 
-                {/* Buttons */}
+                {/* ================================================= */}
+                {/* BUTTONS */}
+                {/* ================================================= */}
+
                 <div className="mt-6 flex flex-wrap gap-2.5 sm:mt-8 sm:gap-3">
-                  {/* GitHub */}
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  {/* View Details */}
+                  <button
+                    type="button"
+                    onClick={() => setSelectedProject(project)}
                     className="
                       inline-flex
                       items-center
                       justify-center
                       gap-2
                       rounded-full
-                      bg-[#6482AD]
+                      border
+                      border-[#6482AD]
                       px-4
                       py-2.5
                       text-sm
                       font-semibold
-                      text-white
+                      text-[#6482AD]
                       transition-all
                       duration-300
                       hover:-translate-y-1
+                      hover:bg-[#6482AD]
+                      hover:text-white
                       hover:shadow-lg
                       sm:px-6
                       sm:py-3
                     "
                   >
-                    <FaGithub />
-                    GitHub
-                  </a>
+                    <FaInfoCircle />
+                    View Details
+                  </button>
 
-                  {/* Demo */}
-                  {project.isAirbank ? (
+                  {/* GitHub */}
+                  {project.github !== "#" && (
                     <a
-                      href={project.demo}
+                      href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="
@@ -385,62 +403,288 @@ const Projects = () => {
                         justify-center
                         gap-2
                         rounded-full
-                        border
-                        border-[#6482AD]
+                        bg-[#6482AD]
                         px-4
                         py-2.5
                         text-sm
                         font-semibold
-                        text-[#6482AD]
+                        text-white
                         transition-all
                         duration-300
                         hover:-translate-y-1
-                        hover:bg-[#6482AD]
-                        hover:text-white
+                        hover:shadow-lg
                         sm:px-6
                         sm:py-3
                       "
                     >
-                      <FaPlay />
-                      Watch Demo
-                    </a>
-                  ) : (
-                    <a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="
-                        inline-flex
-                        items-center
-                        justify-center
-                        gap-2
-                        rounded-full
-                        border
-                        border-[#6482AD]
-                        px-4
-                        py-2.5
-                        text-sm
-                        font-semibold
-                        text-[#6482AD]
-                        transition-all
-                        duration-300
-                        hover:-translate-y-1
-                        hover:bg-[#6482AD]
-                        hover:text-white
-                        sm:px-6
-                        sm:py-3
-                      "
-                    >
-                      <FaExternalLinkAlt />
-                      View Project
+                      <FaGithub />
+                      GitHub
                     </a>
                   )}
+
+                  {/* Demo */}
+                  {project.demo !== "#" &&
+                    (project.isAirbank ? (
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="
+                          inline-flex
+                          items-center
+                          justify-center
+                          gap-2
+                          rounded-full
+                          border
+                          border-[#6482AD]
+                          px-4
+                          py-2.5
+                          text-sm
+                          font-semibold
+                          text-[#6482AD]
+                          transition-all
+                          duration-300
+                          hover:-translate-y-1
+                          hover:bg-[#6482AD]
+                          hover:text-white
+                          sm:px-6
+                          sm:py-3
+                        "
+                      >
+                        <FaPlay />
+                        Watch Demo
+                      </a>
+                    ) : (
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="
+                          inline-flex
+                          items-center
+                          justify-center
+                          gap-2
+                          rounded-full
+                          border
+                          border-[#6482AD]
+                          px-4
+                          py-2.5
+                          text-sm
+                          font-semibold
+                          text-[#6482AD]
+                          transition-all
+                          duration-300
+                          hover:-translate-y-1
+                          hover:bg-[#6482AD]
+                          hover:text-white
+                          sm:px-6
+                          sm:py-3
+                        "
+                      >
+                        <FaExternalLinkAlt />
+                        View Project
+                      </a>
+                    ))}
                 </div>
               </div>
             </motion.article>
           ))}
         </div>
       </div>
+
+      {/* ================================================= */}
+      {/* PROJECT DETAILS MODAL */}
+      {/* ================================================= */}
+
+      {selectedProject && (
+        <div
+          className="
+            fixed
+            inset-0
+            z-50
+            flex
+            items-center
+            justify-center
+            bg-slate-900/80
+            p-4
+            backdrop-blur-sm
+            sm:p-6
+          "
+          onClick={() => setSelectedProject(null)}
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.25 }}
+            className="
+              relative
+              max-h-[90vh]
+              w-full
+              max-w-3xl
+              overflow-y-auto
+              rounded-3xl
+              bg-white
+              p-6
+              shadow-2xl
+              sm:p-8
+              md:p-10
+            "
+            onClick={(event) => event.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              type="button"
+              onClick={() => setSelectedProject(null)}
+              aria-label="Close project details"
+              className="
+                absolute
+                right-4
+                top-4
+                z-10
+                flex
+                h-10
+                w-10
+                items-center
+                justify-center
+                rounded-full
+                bg-slate-100
+                text-slate-600
+                transition-all
+                duration-300
+                hover:bg-slate-200
+                hover:text-slate-900
+              "
+            >
+              <FaTimes />
+            </button>
+
+            {/* Header */}
+            <div className="pr-12">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#6482AD] sm:text-sm">
+                {selectedProject.type}
+              </p>
+
+              <h2 className="mt-2 break-words text-3xl font-bold text-slate-800 sm:text-4xl">
+                {selectedProject.title}
+              </h2>
+
+              <p className="mt-2 text-sm font-medium text-slate-500 sm:text-base">
+                {selectedProject.subtitle}
+              </p>
+            </div>
+
+            {/* About Project */}
+            <div className="mt-8">
+              <h3 className="text-lg font-bold text-slate-800">
+                About the Project
+              </h3>
+
+              <p className="mt-3 text-sm leading-7 text-slate-500 sm:text-base">
+                {selectedProject.details || selectedProject.description}
+              </p>
+            </div>
+
+            {/* Technologies */}
+            <div className="mt-8">
+              <h3 className="text-lg font-bold text-slate-800">
+                Technologies Used
+              </h3>
+
+              <div className="mt-4 flex flex-wrap gap-3">
+                {selectedProject.technologies.map((technology) => (
+                  <div
+                    key={technology.name}
+                    className="
+                      flex
+                      items-center
+                      gap-2
+                      rounded-full
+                      border
+                      border-slate-200
+                      bg-[#F5EDED]
+                      px-4
+                      py-2
+                      text-sm
+                      font-medium
+                      text-slate-700
+                    "
+                  >
+                    <span className="text-[#6482AD]">{technology.icon}</span>
+
+                    {technology.name}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Links */}
+            <div className="mt-8 flex flex-wrap gap-3">
+              {/* GitHub */}
+              {selectedProject.github !== "#" && (
+                <a
+                  href={selectedProject.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
+                    inline-flex
+                    items-center
+                    gap-2
+                    rounded-full
+                    bg-[#6482AD]
+                    px-5
+                    py-3
+                    text-sm
+                    font-semibold
+                    text-white
+                    transition-all
+                    duration-300
+                    hover:-translate-y-1
+                    hover:shadow-lg
+                  "
+                >
+                  <FaGithub />
+                  GitHub
+                </a>
+              )}
+
+              {/* Demo */}
+              {selectedProject.demo !== "#" && (
+                <a
+                  href={selectedProject.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
+                    inline-flex
+                    items-center
+                    gap-2
+                    rounded-full
+                    border
+                    border-[#6482AD]
+                    px-5
+                    py-3
+                    text-sm
+                    font-semibold
+                    text-[#6482AD]
+                    transition-all
+                    duration-300
+                    hover:-translate-y-1
+                    hover:bg-[#6482AD]
+                    hover:text-white
+                  "
+                >
+                  {selectedProject.isAirbank ? (
+                    <FaPlay />
+                  ) : (
+                    <FaExternalLinkAlt />
+                  )}
+
+                  {selectedProject.isAirbank ? "Watch Demo" : "View Project"}
+                </a>
+              )}
+            </div>
+          </motion.div>
+        </div>
+      )}
     </section>
   );
 };
