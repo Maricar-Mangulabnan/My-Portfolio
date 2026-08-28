@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   FaGithub,
@@ -25,83 +25,51 @@ import {
 // AirBank logo
 import airbankLogo from "../assets/projects/airbank/airbank-logo.png";
 
-const projects = [
-  {
-    title: "CampusGo",
-    subtitle: "Thesis Project",
-    description:
-      "An augmented reality gamification system designed to enhance campus engagement by turning campus activities into interactive AR-based quests.",
-    details:
-      "CampusGo is a quest-based augmented reality gamification system developed as a thesis project for SCITE students. It combines AR experiences, quests, rewards, and gamification mechanics to encourage students to explore and engage with the campus.",
-    technologies: [
-      { name: "Unity", icon: <SiUnity /> },
-      { name: "AR Foundation", icon: <FaMobileAlt /> },
-      { name: "Python", icon: <FaCode /> },
-      { name: "Database", icon: <FaDatabase /> },
-    ],
-    type: "Featured Project",
-    github: "#",
-    demo: "#",
-  },
+// Technology icons
+const technologyIcons = {
+  Unity: <SiUnity />,
+  "AR Foundation": <FaMobileAlt />,
+  Python: <FaCode />,
+  Firebase: <FaDatabase />,
 
-  {
-    title: "AirBank",
-    subtitle: "Full-Stack Mobile Application",
-    description:
-      "A mobile banking application developed using Flutter's Cupertino widgets for the frontend and a connected backend system for handling application logic and data.",
-    details:
-      "AirBank is a full-stack mobile banking application designed to demonstrate mobile application development, backend integration, and database management. The frontend uses Flutter and Cupertino widgets, while the backend handles application logic and data processing.",
-    technologies: [
-      { name: "Flutter", icon: <FaMobileAlt /> },
-      { name: "Cupertino", icon: <FaMobileAlt /> },
-      { name: "Backend", icon: <FaCode /> },
-      { name: "Database", icon: <FaDatabase /> },
-    ],
-    type: "Mobile + Backend",
-    github: "https://github.com/Maricar-Mangulabnan/airbank-client.git",
-    demo: "https://drive.google.com/drive/folders/1rqkCbuKsbbQGxOoSwSJfzF5Anp0Q2izY?usp=sharing",
-    logo: airbankLogo,
-    isAirbank: true,
-  },
+  Flutter: <FaMobileAlt />,
+  Cupertino: <FaMobileAlt />,
+  Backend: <FaCode />,
+  Database: <FaDatabase />,
 
-  {
-    title: "Point of Sale System",
-    subtitle: "Web Application",
-    description:
-      "A point of sale system developed to manage sales and store information using a PHP backend, MySQL database, and Bootstrap-based interface.",
-    details:
-      "This Point of Sale System was developed to provide a simple and organized way of managing sales and store-related information. The system uses PHP for backend processing, MySQL for data storage, and Bootstrap for the user interface.",
-    technologies: [
-      { name: "PHP", icon: <SiPhp /> },
-      { name: "MySQL", icon: <SiMysql /> },
-      { name: "Bootstrap", icon: <SiBootstrap /> },
-    ],
-    type: "Web Application",
-    github: "#",
-    demo: "#",
-  },
+  PHP: <SiPhp />,
+  MySQL: <SiMysql />,
+  Bootstrap: <SiBootstrap />,
 
-  {
-    title: "Portfolio Website",
-    subtitle: "Personal Project",
-    description:
-      "A personal developer portfolio built to showcase my projects, technical skills, experience, and background while demonstrating my frontend and backend development skills.",
-    details:
-      "This portfolio website was built to present my professional background, projects, technical skills, internship experience, and contact information. It also demonstrates my ability to build responsive interfaces and integrate frontend and backend technologies.",
-    technologies: [
-      { name: "React", icon: <SiReact /> },
-      { name: "Node.js", icon: <SiNodedotjs /> },
-      { name: "Express", icon: <SiExpress /> },
-      { name: "Tailwind CSS", icon: <SiTailwindcss /> },
-    ],
-    type: "Full Stack",
-    github: "#",
-    demo: "#",
-  },
-];
+  React: <SiReact />,
+  "Node.js": <SiNodedotjs />,
+  Express: <SiExpress />,
+  "Tailwind CSS": <SiTailwindcss />,
+};
 
 const Projects = () => {
+  const [projects, setProjects] = useState([]);
   const [selectedProject, setSelectedProject] = useState(null);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/projects");
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch projects");
+        }
+
+        const data = await response.json();
+
+        setProjects(data);
+      } catch (error) {
+        console.error("Error fetching projects:", error);
+      }
+    };
+
+    fetchProjects();
+  }, []);
 
   return (
     <section className="min-h-screen overflow-hidden bg-[#F5EDED] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
@@ -200,9 +168,9 @@ const Projects = () => {
 
                 <div className="relative px-6 text-center">
                   {/* AirBank Logo */}
-                  {project.isAirbank ? (
+                  {project.title === "AirBank" ? (
                     <img
-                      src={project.logo}
+                      src={airbankLogo}
                       alt="AirBank logo"
                       className="
                         mx-auto
@@ -326,7 +294,7 @@ const Projects = () => {
                 <div className="mt-5 flex flex-wrap gap-2 sm:mt-7 sm:gap-3">
                   {project.technologies.map((technology) => (
                     <div
-                      key={technology.name}
+                      key={technology}
                       className="
                         flex
                         max-w-full
@@ -347,10 +315,10 @@ const Projects = () => {
                       "
                     >
                       <span className="shrink-0 text-[#6482AD]">
-                        {technology.icon}
+                        {technologyIcons[technology] || <FaCode />}
                       </span>
 
-                      <span className="truncate">{technology.name}</span>
+                      <span className="truncate">{technology}</span>
                     </div>
                   ))}
                 </div>
@@ -424,7 +392,7 @@ const Projects = () => {
 
                   {/* Demo */}
                   {project.demo !== "#" &&
-                    (project.isAirbank ? (
+                    (project.title === "AirBank" ? (
                       <a
                         href={project.demo}
                         target="_blank"
@@ -593,7 +561,7 @@ const Projects = () => {
               <div className="mt-4 flex flex-wrap gap-3">
                 {selectedProject.technologies.map((technology) => (
                   <div
-                    key={technology.name}
+                    key={technology}
                     className="
                       flex
                       items-center
@@ -609,9 +577,11 @@ const Projects = () => {
                       text-slate-700
                     "
                   >
-                    <span className="text-[#6482AD]">{technology.icon}</span>
+                    <span className="text-[#6482AD]">
+                      {technologyIcons[technology] || <FaCode />}
+                    </span>
 
-                    {technology.name}
+                    {technology}
                   </div>
                 ))}
               </div>
@@ -672,13 +642,15 @@ const Projects = () => {
                     hover:text-white
                   "
                 >
-                  {selectedProject.isAirbank ? (
+                  {projectIsAirbank(selectedProject) ? (
                     <FaPlay />
                   ) : (
                     <FaExternalLinkAlt />
                   )}
 
-                  {selectedProject.isAirbank ? "Watch Demo" : "View Project"}
+                  {projectIsAirbank(selectedProject)
+                    ? "Watch Demo"
+                    : "View Project"}
                 </a>
               )}
             </div>
@@ -688,5 +660,9 @@ const Projects = () => {
     </section>
   );
 };
+
+function projectIsAirbank(project) {
+  return project.title === "AirBank";
+}
 
 export default Projects;

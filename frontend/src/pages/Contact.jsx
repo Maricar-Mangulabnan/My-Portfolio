@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   FaEnvelope,
@@ -35,6 +36,60 @@ const contactInfo = [
 ];
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const [status, setStatus] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (event) => {
+    const { id, value } = event.target;
+
+    setFormData((previousData) => ({
+      ...previousData,
+      [id]: value,
+    }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    setIsSubmitting(true);
+    setStatus("");
+
+    try {
+      const response = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Failed to send message");
+      }
+
+      setStatus("Message sent successfully!");
+
+      setFormData({
+        name: "",
+        email: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Error sending message:", error);
+      setStatus("Failed to send message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section className="min-h-screen bg-[#F5EDED] px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-6xl">
@@ -130,7 +185,10 @@ const Contact = () => {
               Fill out the form below and I'll get back to you as soon as I can.
             </p>
 
-            <form className="mt-6 space-y-4 sm:mt-8 sm:space-y-5">
+            <form
+              onSubmit={handleSubmit}
+              className="mt-6 space-y-4 sm:mt-8 sm:space-y-5"
+            >
               {/* Name */}
               <div>
                 <label
@@ -143,7 +201,10 @@ const Contact = () => {
                 <input
                   id="name"
                   type="text"
+                  value={formData.name}
+                  onChange={handleChange}
                   placeholder="Your name"
+                  required
                   className="w-full rounded-xl border border-slate-200 bg-[#F5EDED] px-4 py-3 text-sm text-slate-700 outline-none transition focus:border-[#6482AD] focus:ring-2 focus:ring-[#6482AD]/10"
                 />
               </div>
@@ -160,7 +221,10 @@ const Contact = () => {
                 <input
                   id="email"
                   type="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   placeholder="your@email.com"
+                  required
                   className="w-full rounded-xl border border-slate-200 bg-[#F5EDED] px-4 py-3 text-sm text-slate-700 outline-none transition focus:border-[#6482AD] focus:ring-2 focus:ring-[#6482AD]/10"
                 />
               </div>
@@ -177,18 +241,27 @@ const Contact = () => {
                 <textarea
                   id="message"
                   rows="5"
+                  value={formData.message}
+                  onChange={handleChange}
                   placeholder="Tell me about your project or opportunity..."
+                  required
                   className="w-full resize-none rounded-xl border border-slate-200 bg-[#F5EDED] px-4 py-3 text-sm text-slate-700 outline-none transition focus:border-[#6482AD] focus:ring-2 focus:ring-[#6482AD]/10"
                 />
               </div>
 
+              {/* Status */}
+              {status && (
+                <p className="text-sm font-medium text-[#6482AD]">{status}</p>
+              )}
+
               {/* Submit */}
               <button
                 type="submit"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#6482AD] px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:w-auto sm:px-7 sm:text-base"
+                disabled={isSubmitting}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#6482AD] px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto sm:px-7 sm:text-base"
               >
                 <FaPaperPlane />
-                Send Message
+                {isSubmitting ? "Sending..." : "Send Message"}
               </button>
             </form>
           </motion.div>

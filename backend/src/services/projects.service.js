@@ -8,7 +8,11 @@ function getProjects() {
 
   return JSON.parse(data);
 }
-
+function getProjectById(id) {
+  const projects = getProjects();
+  return projects.find((project) => project.id === Number(id));
+}
 module.exports = {
   getProjects,
+  getProjectById,
 };

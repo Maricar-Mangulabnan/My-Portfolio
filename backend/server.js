@@ -12,6 +12,7 @@ app.use(express.json());
 
 // Routes
 app.use("/api/projects", projectsRoutes);
+app.use("/api/contact", require("./src/routes/contact.routes"));
 
 app.get("/", (req, res) => {
   res.send("Portfolio API is running!");

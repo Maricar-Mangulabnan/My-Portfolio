@@ -2,13 +2,45 @@
   {
     "id": 1,
     "title": "CampusGo",
-    "description": "Quest-Based AR Gamification System",
-    "technologies": ["Unity", "C#", "Firebase"]
+    "subtitle": "Thesis Project",
+    "description": "An augmented reality gamification system designed to enhance campus engagement by turning campus activities into interactive AR-based quests.",
+    "details": "CampusGo is a quest-based augmented reality gamification system developed as a thesis project for SCITE students. It combines AR experiences, quests, rewards, and gamification mechanics to encourage students to explore and engage with the campus.",
+    "technologies": ["Unity", "AR Foundation", "Python", "Firebase"],
+    "type": "Featured Project",
+    "github": "#",
+    "demo": "#"
   },
   {
     "id": 2,
+    "title": "AirBank",
+    "subtitle": "Full-Stack Mobile Application",
+    "description": "A mobile banking application developed using Flutter's Cupertino widgets for the frontend and a connected backend system for handling application logic and data.",
+    "details": "AirBank is a full-stack mobile banking application designed to demonstrate mobile application development, backend integration, and database management. The frontend uses Flutter and Cupertino widgets, while the backend handles application logic and data processing.",
+    "technologies": ["Flutter", "Cupertino", "Backend", "Database"],
+    "type": "Mobile + Backend",
+    "github": "https://github.com/Maricar-Mangulabnan/airbank-client.git",
+    "demo": "https://drive.google.com/drive/folders/1rqkCbuKsbbQGxOoSwSJfzF5Anp0Q2izY?usp=sharing"
+  },
+  {
+    "id": 3,
+    "title": "Point of Sale System",
+    "subtitle": "Web Application",
+    "description": "A point of sale system developed to manage sales and store information using a PHP backend, MySQL database, and Bootstrap-based interface.",
+    "details": "This Point of Sale System was developed to provide a simple and organized way of managing sales and store-related information. The system uses PHP for backend processing, MySQL for data storage, and Bootstrap for the user interface.",
+    "technologies": ["PHP", "MySQL", "Bootstrap"],
+    "type": "Web Application",
+    "github": "#",
+    "demo": "#"
+  },
+  {
+    "id": 4,
     "title": "Portfolio Website",
-    "description": "Personal portfolio using React and Node.js",
-    "technologies": ["React", "Express", "Vite"]
+    "subtitle": "Personal Project",
+    "description": "A personal developer portfolio built to showcase my projects, technical skills, experience, and background while demonstrating my frontend and backend development skills.",
+    "details": "This portfolio website was built to present my professional background, projects, technical skills, internship experience, and contact information. It also demonstrates my ability to build responsive interfaces and integrate frontend and backend technologies.",
+    "technologies": ["React", "Node.js", "Express", "Tailwind CSS"],
+    "type": "Full Stack",
+    "github": "#",
+    "demo": "#"
   }
 ]
