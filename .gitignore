@@ -33,3 +33,7 @@ Thumbs.db
 
 # Large video files
 *.mp4
+
+.env
+.env.*
+!.env.example
