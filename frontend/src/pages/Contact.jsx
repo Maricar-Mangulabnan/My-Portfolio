@@ -1,3 +1,4 @@
+import API_BASE_URL from "../services/api";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import {
@@ -61,7 +62,7 @@ const Contact = () => {
     setStatus("");
 
     try {
-      const response = await fetch("http://localhost:5000/api/contact", {
+      const response = await fetch(`${API_BASE_URL}/api/contact`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -1,3 +1,4 @@
+import API_BASE_URL from "../services/api";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
@@ -54,9 +55,7 @@ const Projects = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch(
-          "https://my-portfolio-api-wr9i.onrender.com/api/projects",
-        );
+        const response = await fetch(`${API_BASE_URL}/api/projects`);
 
         if (!response.ok) {
           throw new Error("Failed to fetch projects");
